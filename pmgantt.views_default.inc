@@ -151,8 +151,7 @@ access';
     'pmtask' => 'pmtask',
   );
   /* Filter criterion: Project Management Task: Project */
-  $handler->display->display_options['filters']['project_title']['id'] = 
-  'project_title';
+  $handler->display->display_options['filters']['project_title']['id'] = 'project_title';
   $handler->display->display_options['filters']['project_title']['table'] = 'pmtask';
   $handler->display->display_options['filters']['project_title']['field'] = 'project_title';
   $handler->display->display_options['filters']['project_title']['operator'] = 'contains';
