@@ -25,8 +25,7 @@ function pmgantt_views_default_views() {
   $handler->display->display_options['title'] = 'Gantt Chart';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'Project Management Task: 
-access';
+  $handler->display->display_options['access']['perm'] = 'Project Management Task: access';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -170,7 +169,7 @@ access';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Gantt Chart';
   $handler->display->display_options['menu']['description'] = 'View tasks on a Gantt chart';
-  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['weight'] = '10';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
 
