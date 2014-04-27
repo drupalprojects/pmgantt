@@ -31,8 +31,8 @@ INSTALLATION
  * Install as you would normally install a contributed drupal module. See:
   https://drupal.org/documentation/install/modules-themes/modules-7
   for further information.
- * Note that Views Gantt (a dependency of PM Gantt) also requires the dhtmlxgantt
-  library.
+ * Note that Views Gantt (a dependency of PM Gantt) also requires the 
+  dhtmlxgantt library.
 
 
 CONFIGURATION
