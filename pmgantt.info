@@ -3,6 +3,6 @@ description = "Provides Gantt chart functionality based on Drupal PM."
 core = 7.x
 package = Project Management
 
-dependencies[] = pmproject
-dependencies[] = pmtask
+dependencies[] = pmproject (>=2.x)
+dependencies[] = pmtask (>=2.x)
 dependencies[] = views_gantt
