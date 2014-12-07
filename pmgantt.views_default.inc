@@ -38,11 +38,16 @@ function pmgantt_views_default_views() {
   $handler->display->display_options['style_options']['progress_field'] = 'expression';
   $handler->display->display_options['style_options']['project_id_field'] = 'nid_1';
   $handler->display->display_options['style_options']['project_date_field'] = 'pm_date_1';
-  /* Relationship: Project Management Task: Project */
-  $handler->display->display_options['relationships']['project_nid']['id'] = 'project_nid';
-  $handler->display->display_options['relationships']['project_nid']['table'] = 'pmtask';
-  $handler->display->display_options['relationships']['project_nid']['field'] = 'project_nid';
-  $handler->display->display_options['relationships']['project_nid']['required'] = TRUE;
+  $handler->display->display_options['style_options']['columns'] = array(
+    '' => '',
+  );
+  $handler->display->display_options['style_options']['task_type'] = 'pmtask';
+  $handler->display->display_options['style_options']['scale'] = '2';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['pmtask_parent_target_id']['id'] = 'pmtask_parent_target_id';
+  $handler->display->display_options['relationships']['pmtask_parent_target_id']['table'] = 'field_data_pmtask_parent';
+  $handler->display->display_options['relationships']['pmtask_parent_target_id']['field'] = 'pmtask_parent_target_id';
+  $handler->display->display_options['relationships']['pmtask_parent_target_id']['label'] = 'pmtask_parent';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -85,7 +90,7 @@ function pmgantt_views_default_views() {
   $handler->display->display_options['fields']['nid_1']['id'] = 'nid_1';
   $handler->display->display_options['fields']['nid_1']['table'] = 'node';
   $handler->display->display_options['fields']['nid_1']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid_1']['relationship'] = 'project_nid';
+  $handler->display->display_options['fields']['nid_1']['relationship'] = 'pmtask_parent_target_id';
   $handler->display->display_options['fields']['nid_1']['ui_name'] = 'Project nid';
   $handler->display->display_options['fields']['nid_1']['label'] = '';
   $handler->display->display_options['fields']['nid_1']['element_label_colon'] = FALSE;
@@ -93,7 +98,7 @@ function pmgantt_views_default_views() {
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
-  $handler->display->display_options['fields']['title_1']['relationship'] = 'project_nid';
+  $handler->display->display_options['fields']['title_1']['relationship'] = 'pmtask_parent_target_id';
   $handler->display->display_options['fields']['title_1']['ui_name'] = 'Project title';
   $handler->display->display_options['fields']['title_1']['label'] = '';
   $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
@@ -101,7 +106,7 @@ function pmgantt_views_default_views() {
   $handler->display->display_options['fields']['pm_date_1']['id'] = 'pm_date_1';
   $handler->display->display_options['fields']['pm_date_1']['table'] = 'field_data_pm_date';
   $handler->display->display_options['fields']['pm_date_1']['field'] = 'pm_date';
-  $handler->display->display_options['fields']['pm_date_1']['relationship'] = 'project_nid';
+  $handler->display->display_options['fields']['pm_date_1']['relationship'] = 'pmtask_parent_target_id';
   $handler->display->display_options['fields']['pm_date_1']['ui_name'] = 'Project date';
   $handler->display->display_options['fields']['pm_date_1']['label'] = '';
   $handler->display->display_options['fields']['pm_date_1']['element_label_colon'] = FALSE;
@@ -149,17 +154,18 @@ function pmgantt_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'pmtask' => 'pmtask',
   );
-  /* Filter criterion: Project Management Task: Project */
-  $handler->display->display_options['filters']['project_title']['id'] = 'project_title';
-  $handler->display->display_options['filters']['project_title']['table'] = 'pmtask';
-  $handler->display->display_options['filters']['project_title']['field'] = 'project_title';
-  $handler->display->display_options['filters']['project_title']['operator'] = 'contains';
-  $handler->display->display_options['filters']['project_title']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['project_title']['expose']['operator_id'] = 'project_title_op';
-  $handler->display->display_options['filters']['project_title']['expose']['label'] = 'Project';
-  $handler->display->display_options['filters']['project_title']['expose']['operator'] = 'project_title_op';
-  $handler->display->display_options['filters']['project_title']['expose']['identifier'] = 'project_title';
-  $handler->display->display_options['filters']['project_title']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: Title */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'node';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
+  $handler->display->display_options['filters']['title']['relationship'] = 'pmtask_parent_target_id';
+  $handler->display->display_options['filters']['title']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
+  $handler->display->display_options['filters']['title']['expose']['label'] = 'Project';
+  $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
